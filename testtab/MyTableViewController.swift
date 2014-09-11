@@ -23,7 +23,7 @@ class MyTableViewController: UIViewController , UITableViewDataSource, UITableVi
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         apiUtil.delegate = self
-        apiUtil.searchItunesFor("pocket")
+        //apiUtil.searchItunesFor("pocket")
     }
 
     override func didReceiveMemoryWarning()
