@@ -8,12 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		87AC1F9919CE6C1300A4505B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1F9819CE6C1300A4505B /* AppDelegate.swift */; };
-		87AC1F9B19CE6C1300A4505B /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1F9A19CE6C1300A4505B /* FirstViewController.swift */; };
-		87AC1F9D19CE6C1300A4505B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1F9C19CE6C1300A4505B /* SecondViewController.swift */; };
+		87AC1F9B19CE6C1300A4505B /* MeetingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1F9A19CE6C1300A4505B /* MeetingListViewController.swift */; };
+		87AC1F9D19CE6C1300A4505B /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1F9C19CE6C1300A4505B /* MessageViewController.swift */; };
 		87AC1FA019CE6C1300A4505B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87AC1F9E19CE6C1300A4505B /* Main.storyboard */; };
-		87AC1FA219CE6C1300A4505B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87AC1FA119CE6C1300A4505B /* Images.xcassets */; };
-		87AC1FA519CE6C1300A4505B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87AC1FA319CE6C1300A4505B /* LaunchScreen.xib */; };
 		87AC1FB119CE6C1300A4505B /* chatTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FB019CE6C1300A4505B /* chatTimeTests.swift */; };
+		87AC1FBC19CE6CAC00A4505B /* IOSKnobControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FBB19CE6CAC00A4505B /* IOSKnobControl.m */; };
+		87AC1FC819CE6D2C00A4505B /* PECropRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FBF19CE6D2C00A4505B /* PECropRectView.m */; };
+		87AC1FC919CE6D2C00A4505B /* PECropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FC119CE6D2C00A4505B /* PECropView.m */; };
+		87AC1FCA19CE6D2C00A4505B /* PECropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FC319CE6D2C00A4505B /* PECropViewController.m */; };
+		87AC1FCB19CE6D2C00A4505B /* PEResizeControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FC519CE6D2C00A4505B /* PEResizeControl.m */; };
+		87AC1FCC19CE6D2C00A4505B /* UIImage+PECrop.m in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FC719CE6D2C00A4505B /* UIImage+PECrop.m */; };
+		87AC1FD119CE746200A4505B /* NewMeetingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD019CE746200A4505B /* NewMeetingController.swift */; };
+		87AC1FD319CE759E00A4505B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD219CE759E00A4505B /* EventViewController.swift */; };
+		87AC1FD519CE75B100A4505B /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD419CE75B100A4505B /* MyViewController.swift */; };
+		87AC1FD719CE767C00A4505B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD619CE767C00A4505B /* Util.swift */; };
+		87AC1FD919CE768600A4505B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD819CE768600A4505B /* Constants.swift */; };
+		87AC207B19CE907700A4505B /* MyKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC207A19CE907700A4505B /* MyKnobControl.swift */; };
+		87AC207D19CE988700A4505B /* PEPhotoCropEditor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 87AC207C19CE988700A4505B /* PEPhotoCropEditor.bundle */; };
+		87AC207F19CE98FC00A4505B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87AC207E19CE98FC00A4505B /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +42,33 @@
 		87AC1F9319CE6C1300A4505B /* chatTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87AC1F9719CE6C1300A4505B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87AC1F9819CE6C1300A4505B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		87AC1F9A19CE6C1300A4505B /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		87AC1F9C19CE6C1300A4505B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		87AC1F9A19CE6C1300A4505B /* MeetingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingListViewController.swift; sourceTree = "<group>"; };
+		87AC1F9C19CE6C1300A4505B /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		87AC1F9F19CE6C1300A4505B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		87AC1FA119CE6C1300A4505B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		87AC1FA419CE6C1300A4505B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		87AC1FAA19CE6C1300A4505B /* chatTimeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatTimeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87AC1FAF19CE6C1300A4505B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87AC1FB019CE6C1300A4505B /* chatTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatTimeTests.swift; sourceTree = "<group>"; };
+		87AC1FBA19CE6CAC00A4505B /* IOSKnobControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSKnobControl.h; sourceTree = "<group>"; };
+		87AC1FBB19CE6CAC00A4505B /* IOSKnobControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IOSKnobControl.m; sourceTree = "<group>"; };
+		87AC1FBE19CE6D2C00A4505B /* PECropRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECropRectView.h; sourceTree = "<group>"; };
+		87AC1FBF19CE6D2C00A4505B /* PECropRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECropRectView.m; sourceTree = "<group>"; };
+		87AC1FC019CE6D2C00A4505B /* PECropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECropView.h; sourceTree = "<group>"; };
+		87AC1FC119CE6D2C00A4505B /* PECropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECropView.m; sourceTree = "<group>"; };
+		87AC1FC219CE6D2C00A4505B /* PECropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PECropViewController.h; sourceTree = "<group>"; };
+		87AC1FC319CE6D2C00A4505B /* PECropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PECropViewController.m; sourceTree = "<group>"; };
+		87AC1FC419CE6D2C00A4505B /* PEResizeControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PEResizeControl.h; sourceTree = "<group>"; };
+		87AC1FC519CE6D2C00A4505B /* PEResizeControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PEResizeControl.m; sourceTree = "<group>"; };
+		87AC1FC619CE6D2C00A4505B /* UIImage+PECrop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PECrop.h"; sourceTree = "<group>"; };
+		87AC1FC719CE6D2C00A4505B /* UIImage+PECrop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PECrop.m"; sourceTree = "<group>"; };
+		87AC1FD019CE746200A4505B /* NewMeetingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMeetingController.swift; sourceTree = "<group>"; };
+		87AC1FD219CE759E00A4505B /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		87AC1FD419CE75B100A4505B /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		87AC1FD619CE767C00A4505B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		87AC1FD819CE768600A4505B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "chatTime-Bridging-Header.h"; path = "../chatTime-Bridging-Header.h"; sourceTree = "<group>"; };
+		87AC207A19CE907700A4505B /* MyKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKnobControl.swift; path = ../MyKnobControl.swift; sourceTree = "<group>"; };
+		87AC207C19CE988700A4505B /* PEPhotoCropEditor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PEPhotoCropEditor.bundle; path = chatTime/PEPhotoCropEditor.bundle; sourceTree = "<group>"; };
+		87AC207E19CE98FC00A4505B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +95,8 @@
 				87AC1F9519CE6C1300A4505B /* chatTime */,
 				87AC1FAD19CE6C1300A4505B /* chatTimeTests */,
 				87AC1F9419CE6C1300A4505B /* Products */,
+				87AC1FCE19CE6D5800A4505B /* PECropView */,
+				87AC1FBD19CE6CB600A4505B /* IOSKnobControl */,
 			);
 			sourceTree = "<group>";
 		};
@@ -80,11 +113,16 @@
 			isa = PBXGroup;
 			children = (
 				87AC1F9819CE6C1300A4505B /* AppDelegate.swift */,
-				87AC1F9A19CE6C1300A4505B /* FirstViewController.swift */,
-				87AC1F9C19CE6C1300A4505B /* SecondViewController.swift */,
+				87AC1F9A19CE6C1300A4505B /* MeetingListViewController.swift */,
+				87AC1F9C19CE6C1300A4505B /* MessageViewController.swift */,
+				87AC1FD019CE746200A4505B /* NewMeetingController.swift */,
+				87AC1FD219CE759E00A4505B /* EventViewController.swift */,
+				87AC1FD419CE75B100A4505B /* MyViewController.swift */,
+				87AC207A19CE907700A4505B /* MyKnobControl.swift */,
+				87AC1FD619CE767C00A4505B /* Util.swift */,
+				87AC1FD819CE768600A4505B /* Constants.swift */,
 				87AC1F9E19CE6C1300A4505B /* Main.storyboard */,
-				87AC1FA119CE6C1300A4505B /* Images.xcassets */,
-				87AC1FA319CE6C1300A4505B /* LaunchScreen.xib */,
+				87AC207E19CE98FC00A4505B /* Images.xcassets */,
 				87AC1F9619CE6C1300A4505B /* Supporting Files */,
 			);
 			path = chatTime;
@@ -110,9 +148,37 @@
 		87AC1FAE19CE6C1300A4505B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */,
 				87AC1FAF19CE6C1300A4505B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		87AC1FBD19CE6CB600A4505B /* IOSKnobControl */ = {
+			isa = PBXGroup;
+			children = (
+				87AC1FBA19CE6CAC00A4505B /* IOSKnobControl.h */,
+				87AC1FBB19CE6CAC00A4505B /* IOSKnobControl.m */,
+			);
+			name = IOSKnobControl;
+			sourceTree = "<group>";
+		};
+		87AC1FCE19CE6D5800A4505B /* PECropView */ = {
+			isa = PBXGroup;
+			children = (
+				87AC207C19CE988700A4505B /* PEPhotoCropEditor.bundle */,
+				87AC1FBE19CE6D2C00A4505B /* PECropRectView.h */,
+				87AC1FBF19CE6D2C00A4505B /* PECropRectView.m */,
+				87AC1FC019CE6D2C00A4505B /* PECropView.h */,
+				87AC1FC119CE6D2C00A4505B /* PECropView.m */,
+				87AC1FC219CE6D2C00A4505B /* PECropViewController.h */,
+				87AC1FC319CE6D2C00A4505B /* PECropViewController.m */,
+				87AC1FC419CE6D2C00A4505B /* PEResizeControl.h */,
+				87AC1FC519CE6D2C00A4505B /* PEResizeControl.m */,
+				87AC1FC619CE6D2C00A4505B /* UIImage+PECrop.h */,
+				87AC1FC719CE6D2C00A4505B /* UIImage+PECrop.m */,
+			);
+			name = PECropView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,9 +261,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87AC207F19CE98FC00A4505B /* Images.xcassets in Resources */,
+				87AC207D19CE988700A4505B /* PEPhotoCropEditor.bundle in Resources */,
 				87AC1FA019CE6C1300A4505B /* Main.storyboard in Resources */,
-				87AC1FA519CE6C1300A4505B /* LaunchScreen.xib in Resources */,
-				87AC1FA219CE6C1300A4505B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,9 +281,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87AC1F9D19CE6C1300A4505B /* SecondViewController.swift in Sources */,
+				87AC207B19CE907700A4505B /* MyKnobControl.swift in Sources */,
+				87AC1F9D19CE6C1300A4505B /* MessageViewController.swift in Sources */,
+				87AC1FD319CE759E00A4505B /* EventViewController.swift in Sources */,
+				87AC1FBC19CE6CAC00A4505B /* IOSKnobControl.m in Sources */,
+				87AC1FCA19CE6D2C00A4505B /* PECropViewController.m in Sources */,
 				87AC1F9919CE6C1300A4505B /* AppDelegate.swift in Sources */,
-				87AC1F9B19CE6C1300A4505B /* FirstViewController.swift in Sources */,
+				87AC1FCB19CE6D2C00A4505B /* PEResizeControl.m in Sources */,
+				87AC1FC819CE6D2C00A4505B /* PECropRectView.m in Sources */,
+				87AC1FD719CE767C00A4505B /* Util.swift in Sources */,
+				87AC1F9B19CE6C1300A4505B /* MeetingListViewController.swift in Sources */,
+				87AC1FCC19CE6D2C00A4505B /* UIImage+PECrop.m in Sources */,
+				87AC1FD119CE746200A4505B /* NewMeetingController.swift in Sources */,
+				87AC1FD919CE768600A4505B /* Constants.swift in Sources */,
+				87AC1FD519CE75B100A4505B /* MyViewController.swift in Sources */,
+				87AC1FC919CE6D2C00A4505B /* PECropView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,14 +324,6 @@
 				87AC1F9F19CE6C1300A4505B /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		87AC1FA319CE6C1300A4505B /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				87AC1FA419CE6C1300A4505B /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -342,9 +412,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = chatTime/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "chatTime-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -352,9 +425,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = chatTime/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "chatTime-Bridging-Header.h";
 			};
 			name = Release;
 		};

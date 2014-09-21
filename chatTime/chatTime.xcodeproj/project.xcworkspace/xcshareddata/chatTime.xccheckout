@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0BFCD5F2-AE70-4895-9393-6F836A43DFEE</string>
+	<key>IDESourceControlProjectName</key>
+	<string>chatTime</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2D710ABE23FB89456C65F7AB3CD13070E014FF09</key>
+		<string>https://github.com/rexpie/catchup-gui.git</string>
+		<key>9BCAD711CC941EF0325DD868ED285FB262F868BA</key>
+		<string>https://github.com/rexpie/ios-knob-control.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>chatTime/chatTime.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2D710ABE23FB89456C65F7AB3CD13070E014FF09</key>
+		<string>../../..</string>
+		<key>9BCAD711CC941EF0325DD868ED285FB262F868BA</key>
+		<string>../../..chatTime/chatTime/ios-knob-control/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/rexpie/catchup-gui.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2D710ABE23FB89456C65F7AB3CD13070E014FF09</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2D710ABE23FB89456C65F7AB3CD13070E014FF09</string>
+			<key>IDESourceControlWCCName</key>
+			<string>catchup-gui</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9BCAD711CC941EF0325DD868ED285FB262F868BA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ios-knob-control</string>
+		</dict>
+	</array>
+</dict>
+</plist>
