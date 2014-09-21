@@ -65,7 +65,7 @@
 		87AC1FD419CE75B100A4505B /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		87AC1FD619CE767C00A4505B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		87AC1FD819CE768600A4505B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "chatTime-Bridging-Header.h"; path = "../chatTime-Bridging-Header.h"; sourceTree = "<group>"; };
+		87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "chatTime-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		87AC207A19CE907700A4505B /* MyKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKnobControl.swift; path = ../MyKnobControl.swift; sourceTree = "<group>"; };
 		87AC207C19CE988700A4505B /* PEPhotoCropEditor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PEPhotoCropEditor.bundle; path = chatTime/PEPhotoCropEditor.bundle; sourceTree = "<group>"; };
 		87AC207E19CE98FC00A4505B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -132,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				87AC1F9719CE6C1300A4505B /* Info.plist */,
+				87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -148,7 +149,6 @@
 		87AC1FAE19CE6C1300A4505B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */,
 				87AC1FAF19CE6C1300A4505B /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -487,6 +487,7 @@
 				87AC1FB619CE6C1300A4505B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		87AC1FB719CE6C1300A4505B /* Build configuration list for PBXNativeTarget "chatTimeTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +496,7 @@
 				87AC1FB919CE6C1300A4505B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
