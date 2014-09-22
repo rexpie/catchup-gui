@@ -26,6 +26,7 @@
 		87AC207B19CE907700A4505B /* MyKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC207A19CE907700A4505B /* MyKnobControl.swift */; };
 		87AC207D19CE988700A4505B /* PEPhotoCropEditor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 87AC207C19CE988700A4505B /* PEPhotoCropEditor.bundle */; };
 		87AC207F19CE98FC00A4505B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87AC207E19CE98FC00A4505B /* Images.xcassets */; };
+		87AC208119CEEE5200A4505B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC208019CEEE5200A4505B /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		87AC207A19CE907700A4505B /* MyKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKnobControl.swift; path = ../MyKnobControl.swift; sourceTree = "<group>"; };
 		87AC207C19CE988700A4505B /* PEPhotoCropEditor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PEPhotoCropEditor.bundle; path = chatTime/PEPhotoCropEditor.bundle; sourceTree = "<group>"; };
 		87AC207E19CE98FC00A4505B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		87AC208019CEEE5200A4505B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				87AC207A19CE907700A4505B /* MyKnobControl.swift */,
 				87AC1FD619CE767C00A4505B /* Util.swift */,
 				87AC1FD819CE768600A4505B /* Constants.swift */,
+				87AC208019CEEE5200A4505B /* LoginViewController.swift */,
 				87AC1F9E19CE6C1300A4505B /* Main.storyboard */,
 				87AC207E19CE98FC00A4505B /* Images.xcassets */,
 				87AC1F9619CE6C1300A4505B /* Supporting Files */,
@@ -293,6 +296,7 @@
 				87AC1F9B19CE6C1300A4505B /* MeetingListViewController.swift in Sources */,
 				87AC1FCC19CE6D2C00A4505B /* UIImage+PECrop.m in Sources */,
 				87AC1FD119CE746200A4505B /* NewMeetingController.swift in Sources */,
+				87AC208119CEEE5200A4505B /* LoginViewController.swift in Sources */,
 				87AC1FD919CE768600A4505B /* Constants.swift in Sources */,
 				87AC1FD519CE75B100A4505B /* MyViewController.swift in Sources */,
 				87AC1FC919CE6D2C00A4505B /* PECropView.m in Sources */,
