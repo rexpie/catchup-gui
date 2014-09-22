@@ -13,6 +13,9 @@ class LoginViewController: UIViewController {
     @IBAction func unwindLoginView(sender: AnyObject) {
         performSegueWithIdentifier("unwindFromLogin", sender: self)
     }
+    @IBAction func register(sender: AnyObject) {
+        performSegueWithIdentifier("registerSegue", sender: self)
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()

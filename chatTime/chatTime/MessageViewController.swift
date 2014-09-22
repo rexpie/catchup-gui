@@ -10,12 +10,14 @@ import UIKit
 
 class MessageViewController: UIViewController {
 
+
+    @IBAction func loginClicked(sender: AnyObject) {
+        performSegueWithIdentifier("loginSegue", sender: self)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        let storyboard = self.storyboard!
-        let segue = UIStoryboardSegue(identifier: "loginSegue", source: self, destination: storyboard.instantiateViewControllerWithIdentifier("loginViewController") as UIViewController)
-        performSegueWithIdentifier("loginSegue", sender: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +28,7 @@ class MessageViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         println("logging in")
+
     }
 
     

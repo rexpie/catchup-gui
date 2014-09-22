@@ -306,7 +306,6 @@ class MeetingListViewController: UIViewController {
     
     @IBAction func unwindFromLoginViewController(segue: UIStoryboardSegue)
     {
-    
     }
 
 }
