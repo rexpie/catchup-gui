@@ -10,9 +10,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var phoneName: UITextField!
+    
+    @IBOutlet weak var password: UITextField!
+
+    
     @IBAction func unwindLoginView(sender: AnyObject) {
         performSegueWithIdentifier("unwindFromLogin", sender: self)
     }
+    
     @IBAction func register(sender: AnyObject) {
         performSegueWithIdentifier("registerSegue", sender: self)
     }
@@ -28,6 +34,15 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func loginButtonPressed(sender: AnyObject) {
+        let thePhoneName = phoneName.text
+        let thePassword = password.text
+        
+//        println(thePhoneName)
+//        println(thePassword)
+        
+        
+    }
 
     /*
     // MARK: - Navigation
@@ -38,5 +53,9 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue)
+    {
+    }
 
 }

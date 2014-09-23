@@ -304,7 +304,7 @@ class MeetingListViewController: UIViewController {
         knobControl.position = knobControl.position
     }
     
-    @IBAction func unwindFromLoginViewController(segue: UIStoryboardSegue)
+    @IBAction func unwindToMainScreen(segue: UIStoryboardSegue)
     {
     }
 

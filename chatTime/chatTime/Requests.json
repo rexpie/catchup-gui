@@ -1,0 +1,9 @@
+{
+    "login" :{
+           "req"   : "user/userLogin",
+           "params": [
+                      {"name":"nickorphone", "optional":false},
+                      {"name":"password", "optional":false}
+                      ]
+    }
+}

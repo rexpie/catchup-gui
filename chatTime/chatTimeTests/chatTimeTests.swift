@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import chatTime
 
 class chatTimeTests: XCTestCase {
     
@@ -31,6 +32,21 @@ class chatTimeTests: XCTestCase {
         self.measureBlock() {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testURL(){
+        let testRequest = Utils.getRequests("login")!
+        println("================================")
+        println(testRequest.getURL())
+        
+        XCTAssert(testRequest.getURL() == "http://192.168.0.100:8080/tokenTest/user/userLogin?nickorphone=&password=", "wut")
+        
+        testRequest.setParamValue("nickorphone", value: "peach")
+        testRequest.setParamValue("password", value: "123456")
+        
+        
+        XCTAssert(testRequest.getURL() == "http://192.168.0.100:8080/tokenTest/user/userLogin?nickorphone=peach&password=123456", "wut")
+
     }
     
 }

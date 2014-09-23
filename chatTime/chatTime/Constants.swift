@@ -8,6 +8,23 @@
 
 import UIKit
 
-class Constants: NSObject {
-   
+
+public let PROTOCOL = "http://"
+public let HOST = "192.168.0.100"
+public let PORT = "8080"
+
+public let WEB_ROOT = "tokenTest"
+public let PARAM_SEPARATOR = "?"
+
+let requestsPath = NSBundle.mainBundle().pathForResource("Requests", ofType: "json")
+
+let requestsConfig = NSFileManager.defaultManager().contentsAtPath(requestsPath!)
+
+let requests = JSONValue(requestsConfig)
+
+public class Constants: NSObject {
+    
+    
+    
 }
+

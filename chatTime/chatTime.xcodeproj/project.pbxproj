@@ -21,12 +21,15 @@
 		87AC1FD119CE746200A4505B /* NewMeetingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD019CE746200A4505B /* NewMeetingController.swift */; };
 		87AC1FD319CE759E00A4505B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD219CE759E00A4505B /* EventViewController.swift */; };
 		87AC1FD519CE75B100A4505B /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD419CE75B100A4505B /* MyViewController.swift */; };
-		87AC1FD719CE767C00A4505B /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD619CE767C00A4505B /* Util.swift */; };
+		87AC1FD719CE767C00A4505B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD619CE767C00A4505B /* Utils.swift */; };
 		87AC1FD919CE768600A4505B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1FD819CE768600A4505B /* Constants.swift */; };
 		87AC207B19CE907700A4505B /* MyKnobControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC207A19CE907700A4505B /* MyKnobControl.swift */; };
 		87AC207D19CE988700A4505B /* PEPhotoCropEditor.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 87AC207C19CE988700A4505B /* PEPhotoCropEditor.bundle */; };
 		87AC207F19CE98FC00A4505B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87AC207E19CE98FC00A4505B /* Images.xcassets */; };
 		87AC208119CEEE5200A4505B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC208019CEEE5200A4505B /* LoginViewController.swift */; };
+		87AC208319D1AB5F00A4505B /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC208219D1AB5E00A4505B /* Request.swift */; };
+		87AC208619D1BC8900A4505B /* Requests.json in Resources */ = {isa = PBXBuildFile; fileRef = 87AC208419D1BC8900A4505B /* Requests.json */; };
+		87AC208A19D1BE2B00A4505B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC208919D1BE2B00A4505B /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +67,17 @@
 		87AC1FD019CE746200A4505B /* NewMeetingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMeetingController.swift; sourceTree = "<group>"; };
 		87AC1FD219CE759E00A4505B /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		87AC1FD419CE75B100A4505B /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
-		87AC1FD619CE767C00A4505B /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		87AC1FD619CE767C00A4505B /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		87AC1FD819CE768600A4505B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "chatTime-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		87AC207A19CE907700A4505B /* MyKnobControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyKnobControl.swift; path = ../MyKnobControl.swift; sourceTree = "<group>"; };
 		87AC207C19CE988700A4505B /* PEPhotoCropEditor.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = PEPhotoCropEditor.bundle; path = chatTime/PEPhotoCropEditor.bundle; sourceTree = "<group>"; };
 		87AC207E19CE98FC00A4505B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		87AC208019CEEE5200A4505B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		87AC208219D1AB5E00A4505B /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = ../Request.swift; sourceTree = "<group>"; };
+		87AC208419D1BC8900A4505B /* Requests.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Requests.json; sourceTree = "<group>"; };
+		87AC208819D1BE2B00A4505B /* SwiftyJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftyJSON.h; sourceTree = "<group>"; };
+		87AC208919D1BE2B00A4505B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +104,7 @@
 				87AC1F9519CE6C1300A4505B /* chatTime */,
 				87AC1FAD19CE6C1300A4505B /* chatTimeTests */,
 				87AC1F9419CE6C1300A4505B /* Products */,
+				87AC208B19D1BE3B00A4505B /* JSON */,
 				87AC1FCE19CE6D5800A4505B /* PECropView */,
 				87AC1FBD19CE6CB600A4505B /* IOSKnobControl */,
 			);
@@ -121,8 +129,9 @@
 				87AC1FD219CE759E00A4505B /* EventViewController.swift */,
 				87AC1FD419CE75B100A4505B /* MyViewController.swift */,
 				87AC207A19CE907700A4505B /* MyKnobControl.swift */,
-				87AC1FD619CE767C00A4505B /* Util.swift */,
+				87AC1FD619CE767C00A4505B /* Utils.swift */,
 				87AC1FD819CE768600A4505B /* Constants.swift */,
+				87AC208219D1AB5E00A4505B /* Request.swift */,
 				87AC208019CEEE5200A4505B /* LoginViewController.swift */,
 				87AC1F9E19CE6C1300A4505B /* Main.storyboard */,
 				87AC207E19CE98FC00A4505B /* Images.xcassets */,
@@ -136,6 +145,7 @@
 			children = (
 				87AC1F9719CE6C1300A4505B /* Info.plist */,
 				87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */,
+				87AC208419D1BC8900A4505B /* Requests.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -182,6 +192,15 @@
 				87AC1FC719CE6D2C00A4505B /* UIImage+PECrop.m */,
 			);
 			name = PECropView;
+			sourceTree = "<group>";
+		};
+		87AC208B19D1BE3B00A4505B /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				87AC208819D1BE2B00A4505B /* SwiftyJSON.h */,
+				87AC208919D1BE2B00A4505B /* SwiftyJSON.swift */,
+			);
+			name = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87AC207F19CE98FC00A4505B /* Images.xcassets in Resources */,
+				87AC208619D1BC8900A4505B /* Requests.json in Resources */,
 				87AC207D19CE988700A4505B /* PEPhotoCropEditor.bundle in Resources */,
 				87AC1FA019CE6C1300A4505B /* Main.storyboard in Resources */,
 			);
@@ -291,13 +311,15 @@
 				87AC1FCA19CE6D2C00A4505B /* PECropViewController.m in Sources */,
 				87AC1F9919CE6C1300A4505B /* AppDelegate.swift in Sources */,
 				87AC1FCB19CE6D2C00A4505B /* PEResizeControl.m in Sources */,
+				87AC208319D1AB5F00A4505B /* Request.swift in Sources */,
 				87AC1FC819CE6D2C00A4505B /* PECropRectView.m in Sources */,
-				87AC1FD719CE767C00A4505B /* Util.swift in Sources */,
+				87AC1FD719CE767C00A4505B /* Utils.swift in Sources */,
 				87AC1F9B19CE6C1300A4505B /* MeetingListViewController.swift in Sources */,
 				87AC1FCC19CE6D2C00A4505B /* UIImage+PECrop.m in Sources */,
 				87AC1FD119CE746200A4505B /* NewMeetingController.swift in Sources */,
 				87AC208119CEEE5200A4505B /* LoginViewController.swift in Sources */,
 				87AC1FD919CE768600A4505B /* Constants.swift in Sources */,
+				87AC208A19D1BE2B00A4505B /* SwiftyJSON.swift in Sources */,
 				87AC1FD519CE75B100A4505B /* MyViewController.swift in Sources */,
 				87AC1FC919CE6D2C00A4505B /* PECropView.m in Sources */,
 			);
