@@ -13,7 +13,7 @@ public class Request {
     public var reqString:String!
     public var params:[Param]!
     
-    public func getURL() -> String{
+    public func getURLString() -> String{
         
         var url = baseURL + reqString + PARAM_SEPARATOR
         
@@ -21,11 +21,21 @@ public class Request {
         
         for param in params
         {
+            if ( param.isOptional && (param.value == nil || param.value == ""))
+            {
+                continue
+            }
             paramString.append(param.toString())
         }
         
         url += join("&", paramString)
         
+        return url
+    }
+    
+    public func getURL() -> NSURL?
+    {
+        let url = NSURL(string: getURLString())
         return url
     }
     
@@ -48,7 +58,7 @@ public class Request {
 public class Param {
     var name: String!
     var value: String!
-    var isOptional: Bool!
+    var isOptional: Bool = false
     
     public init (name: String, isOptional: Bool){
         self.name = name
@@ -59,6 +69,10 @@ public class Param {
         if (self.value != nil) {
             return self.name + "=" + self.value
         } else {
+            if (self.isOptional == false && (self.value == nil || self.value == "")){
+                //
+                println("ERROR, empty non-optional param: \(self.name)")
+            }
             return self.name + "="
         }
     }

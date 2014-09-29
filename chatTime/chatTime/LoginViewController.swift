@@ -38,6 +38,29 @@ class LoginViewController: UIViewController {
         let thePhoneName = phoneName.text
         let thePassword = password.text
         
+        let loginRequest = Utils.getRequests("login")!
+        loginRequest.setParamValue("nickorphone", value: thePhoneName)
+        loginRequest.setParamValue("password", value: thePassword)
+        
+        let url : NSURL = loginRequest.getURL()!
+        let urlRequest : NSURLRequest = NSURLRequest(URL: url)
+        
+        
+        let operation: AFHTTPRequestOperation = AFHTTPRequestOperation(request: urlRequest)
+        operation.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
+        
+        operation.setCompletionBlockWithSuccess(
+            { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+                println("Success")
+                println("JSON: " + "\(responseObject)")
+            },
+            failure:{ (operation: AFHTTPRequestOperation!, error:NSError!) -> Void in
+                println("Failure")
+                println(error.description)
+        })
+        
+        operation.start()
+        
 //        println(thePhoneName)
 //        println(thePassword)
         

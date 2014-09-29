@@ -36,10 +36,10 @@ class MeetingListViewController: UIViewController {
         
         // load images
         // TODO async
-        images.append(UIImage(named: "item1"))
-        images.append(UIImage(named: "item2"))
-        images.append(UIImage(named: "item3"))
-        images.append(UIImage(named: "item4"))
+        images.append(UIImage(named: "item1")!)
+        images.append(UIImage(named: "item2")!)
+        images.append(UIImage(named: "item3")!)
+        images.append(UIImage(named: "item4")!)
         
         let radius :Int = 800
         knobControl = getKnobControl(knobControlView, radius)
@@ -107,8 +107,10 @@ class MeetingListViewController: UIViewController {
     
     func animateStack(nextIndex:Int, direction:CGFloat)
     {
-        println("positionIndex", String(knobControl.positionIndex))
-        println("last pos%d", String(lastPositionIndex))
+        print("positionIndex")
+        println(knobControl.positionIndex)
+        print("last pos%d")
+        println(lastPositionIndex)
         
         println("nextIndex", nextIndex)
         let translationX = direction * 100
