@@ -39,6 +39,7 @@
 		87DB64A919D98DE200DD9AED /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DB649E19D98DE200DD9AED /* AFURLRequestSerialization.m */; };
 		87DB64AA19D98DE200DD9AED /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DB64A019D98DE200DD9AED /* AFURLResponseSerialization.m */; };
 		87DB64AB19D98DE200DD9AED /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 87DB64A219D98DE200DD9AED /* AFURLSessionManager.m */; };
+		87DB64AD19DA80AD00DD9AED /* ResponseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DB64AC19DA80AD00DD9AED /* ResponseHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 		87DB64A019D98DE200DD9AED /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		87DB64A119D98DE200DD9AED /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		87DB64A219D98DE200DD9AED /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		87DB64AC19DA80AD00DD9AED /* ResponseHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				87AC1FD819CE768600A4505B /* Constants.swift */,
 				87AC208219D1AB5E00A4505B /* Request.swift */,
 				87AC208019CEEE5200A4505B /* LoginViewController.swift */,
+				87DB64AC19DA80AD00DD9AED /* ResponseHandler.swift */,
 				87AC1F9E19CE6C1300A4505B /* Main.storyboard */,
 				87AC207E19CE98FC00A4505B /* Images.xcassets */,
 				87AC1F9619CE6C1300A4505B /* Supporting Files */,
@@ -373,6 +376,7 @@
 				87AC1FC819CE6D2C00A4505B /* PECropRectView.m in Sources */,
 				87AC1FD719CE767C00A4505B /* Utils.swift in Sources */,
 				87DB64A519D98DE200DD9AED /* AFHTTPSessionManager.m in Sources */,
+				87DB64AD19DA80AD00DD9AED /* ResponseHandler.swift in Sources */,
 				87AC1F9B19CE6C1300A4505B /* MeetingListViewController.swift in Sources */,
 				87AC1FCC19CE6D2C00A4505B /* UIImage+PECrop.m in Sources */,
 				87DB64A819D98DE200DD9AED /* AFURLConnectionOperation.m in Sources */,

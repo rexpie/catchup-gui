@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, ResponseHandler{
 
     @IBOutlet weak var phoneName: UITextField!
     
@@ -38,33 +38,12 @@ class LoginViewController: UIViewController {
         let thePhoneName = phoneName.text
         let thePassword = password.text
         
+        // TODO: add check
         let loginRequest = Utils.getRequests("login")!
         loginRequest.setParamValue("nickorphone", value: thePhoneName)
         loginRequest.setParamValue("password", value: thePassword)
         
-        let url : NSURL = loginRequest.getURL()!
-        let urlRequest : NSURLRequest = NSURLRequest(URL: url)
-        
-        
-        let operation: AFHTTPRequestOperation = AFHTTPRequestOperation(request: urlRequest)
-        operation.responseSerializer = AFJSONResponseSerializer(readingOptions: NSJSONReadingOptions.AllowFragments)
-        
-        operation.setCompletionBlockWithSuccess(
-            { (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
-                println("Success")
-                println("JSON: " + "\(responseObject)")
-            },
-            failure:{ (operation: AFHTTPRequestOperation!, error:NSError!) -> Void in
-                println("Failure")
-                println(error.description)
-        })
-        
-        operation.start()
-        
-//        println(thePhoneName)
-//        println(thePassword)
-        
-        
+        RequestHelper.sendRequest(loginRequest, delegate: self)
     }
 
     /*
@@ -76,7 +55,45 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    func handelResponse(operation: AFHTTPRequestOperation, responseObject : AnyObject!) {
+        println("Success")
+        println("\(responseObject.description)")
+        
+        let dict = responseObject as NSDictionary
+        
+        let json = JSONValue(dict)
+        
+        let id = json["id"].integer
+        let token = json["token"].string!
+        let status = json["status"].string!
+        println("id: \(id)")
+        println("token: \(token)")
+        println("status: \(status)")
+        
+        var defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(token, forKey: "token")
+
+    }
     
+    
+    func handelFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!) {
+        println("Failure")
+        
+        let dict = responseObject as NSDictionary
+        let json = JSONValue(dict)
+        
+        let status = json["status"].string!
+        println(status) 
+        
+    }
+    
+    
+    func handelError(operation: AFHTTPRequestOperation, error: NSError!) {
+        println("Error")
+        println(error.description)
+
+    }
+
     @IBAction func unwindToLoginViewController(segue: UIStoryboardSegue)
     {
     }
