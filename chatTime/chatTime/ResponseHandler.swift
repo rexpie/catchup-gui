@@ -17,7 +17,7 @@ protocol ResponseHandler{
 
 class RequestHelper{
 
-     class func sendRequest(request: Request, delegate :ResponseHandler ){
+     class func sendRequest(request: Request, delegate :ResponseHandler? ){
         let url : NSURL = request.getURL()!
         let urlRequest : NSURLRequest = NSURLRequest(URL: url)
         println(url.description)
@@ -31,17 +31,23 @@ class RequestHelper{
                 let json = JSONValue(dict)
                 let status = json["status"].string!
                 println(status)
-                if (status == "OK")
+                if ( delegate != nil)
                 {
-                    delegate.handelResponse(operation, responseObject: responseObject)
-                }
-                else
-                {
-                    delegate.handelFailure(operation, responseObject: responseObject)
+                    if (status == "OK")
+                    {
+                        delegate!.handelResponse(operation, responseObject: responseObject)
+                    }
+                    else
+                    {
+                        delegate!.handelFailure(operation, responseObject: responseObject)
+                    }
                 }
             },
             failure:{ (operation: AFHTTPRequestOperation!, error:NSError!) -> Void in
-                delegate.handelError(operation, error: error)
+                if ( delegate != nil)
+                {
+                    delegate!.handelError(operation, error: error)
+                }
         })
         
         operation.start()

@@ -35,7 +35,7 @@ class chatTimeTests: XCTestCase {
     }
     
     func testURL(){
-        let testRequest = Utils.getRequests("login")!
+        let testRequest = Utils.getRequest("login")!
         println("================================")
         println(testRequest.getURL())
         
@@ -49,4 +49,29 @@ class chatTimeTests: XCTestCase {
 
     }
     
+    func testMD5(){
+        let source : String = "secretpasscode\n";
+        XCTAssert(source.md5 == "7571af3ff2620c360917bba8201d9d94", "wut md5");
+    }
+    
+}
+
+extension String  {
+    var md5: String! {
+        let str = self.cStringUsingEncoding(NSUTF8StringEncoding)
+        let strLen = CC_LONG(self.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let digestLen = Int(CC_MD5_DIGEST_LENGTH)
+        let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
+        
+        CC_MD5(str!, strLen, result)
+        
+        var hash = NSMutableString()
+        for i in 0..<digestLen {
+            hash.appendFormat("%02x", result[i])
+        }
+        
+        result.destroy()
+        
+        return String(format: hash)
+    }
 }

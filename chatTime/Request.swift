@@ -13,7 +13,7 @@ public class Request {
     public var reqString:String!
     public var params:[Param]!
     
-    public func getURLString() -> String{
+    public func getURLString(needToken: Bool = false) -> String{
         
         var url = baseURL + reqString + PARAM_SEPARATOR
         
@@ -26,6 +26,43 @@ public class Request {
                 continue
             }
             paramString.append(param.toString())
+        }
+        
+        if(needToken)
+        {
+            var defaults = NSUserDefaults.standardUserDefaults()
+            var token = defaults.objectForKey("token") as String?
+            var id = defaults.objectForKey("id") as String?
+            
+            if ( token == nil || id == nil)
+            {
+                //missing cache, need to request for token
+                if (Utils.refreshToken())
+                {
+                    // successful token refresh
+                    token = defaults.objectForKey("token") as String?
+                    id = defaults.objectForKey("id") as String?
+                    
+                    let tokenParam = Param(name: "token", value: token!, isOptional: false)
+                    let idParam = Param(name: "id", value: id!, isOptional: false)
+                    
+                    paramString.append(idParam.toString())
+                    paramString.append(tokenParam.toString())
+                }
+                else
+                {
+                    // nope, then login again
+                }
+            }
+            else
+            {
+                let tokenParam = Param(name: "token", value: token!, isOptional: false)
+                let idParam = Param(name: "id", value: id!, isOptional: false)
+                
+                paramString.append(idParam.toString())
+                paramString.append(tokenParam.toString())
+
+            }
         }
         
         url += join("&", paramString)
@@ -59,6 +96,12 @@ public class Param {
     var name: String!
     var value: String!
     var isOptional: Bool = false
+    
+    public init (name: String, value: String, isOptional: Bool){
+        self.name = name
+        self.isOptional = isOptional
+        self.value = value
+    }
     
     public init (name: String, isOptional: Bool){
         self.name = name

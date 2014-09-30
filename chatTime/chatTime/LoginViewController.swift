@@ -36,12 +36,16 @@ class LoginViewController: UIViewController, ResponseHandler{
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
         let thePhoneName = phoneName.text
-        let thePassword = password.text
+        let thePassword = Utils.md5(password.text)
         
         // TODO: add check
-        let loginRequest = Utils.getRequests("login")!
+        let loginRequest = Utils.getRequest("login")!
         loginRequest.setParamValue("nickorphone", value: thePhoneName)
         loginRequest.setParamValue("password", value: thePassword)
+        
+        var defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(thePhoneName, forKey: "nickorphone")
+        defaults.setObject(thePassword, forKey: "password")
         
         RequestHelper.sendRequest(loginRequest, delegate: self)
     }
@@ -72,7 +76,8 @@ class LoginViewController: UIViewController, ResponseHandler{
         
         var defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(token, forKey: "token")
-
+        defaults.setObject(id, forKey: "id")
+        
     }
     
     

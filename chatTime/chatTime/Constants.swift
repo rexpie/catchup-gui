@@ -16,6 +16,8 @@ public let PORT = "8080"
 public let WEB_ROOT = "tokenTest"
 public let PARAM_SEPARATOR = "?"
 
+public let SALT = "扯淡=chatTime=茶谈"
+
 let requestsPath = NSBundle.mainBundle().pathForResource("Requests", ofType: "json")
 
 let requestsConfig = NSFileManager.defaultManager().contentsAtPath(requestsPath!)

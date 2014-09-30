@@ -10,3 +10,4 @@
 #import "AFURLRequestSerialization.h"
 #import "AFURLResponseSerialization.h"
 #import "AFURLSessionManager.h"
+#import <CommonCrypto/CommonCrypto.h>
