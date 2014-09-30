@@ -27,6 +27,48 @@ public class Utils: NSObject {
                     params.append(param)
                 }
             }
+            var needToken = requests[reqName]["needToken"].bool
+            if (needToken == nil)
+            {
+                needToken = false
+            }
+            
+            if(needToken!)
+            {
+                var defaults = NSUserDefaults.standardUserDefaults()
+                var token = defaults.objectForKey("token") as String?
+                var id = defaults.objectForKey("id") as String?
+                
+                if ( token == nil || id == nil)
+                {
+                    //missing cache, need to request for token
+                    if (Utils.refreshToken())
+                    {
+                        // successful token refresh
+                        token = defaults.objectForKey("token") as String?
+                        id = defaults.objectForKey("id") as String?
+                        
+                        let tokenParam = Param(name: "token", value: token!, isOptional: false)
+                        let idParam = Param(name: "id", value: id!, isOptional: false)
+                        
+                        params.append(tokenParam)
+                        params.append(idParam)
+                    }
+                    else
+                    {
+                        // nope, then login again
+                    }
+                }
+                else
+                {
+                    let tokenParam = Param(name: "token", value: token!, isOptional: false)
+                    let idParam = Param(name: "id", value: id!, isOptional: false)
+                    
+                    params.append(tokenParam)
+                    params.append(idParam)
+                    
+                }
+            }
             return params
         }
         
