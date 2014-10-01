@@ -9,9 +9,9 @@
 import UIKit
 
 protocol ResponseHandler{
-    func handelResponse(operation: AFHTTPRequestOperation, responseObject : AnyObject!)
-    func handelFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!)
-    func handelError(operation: AFHTTPRequestOperation, error: NSError!)
+    func handleResponse(operation: AFHTTPRequestOperation, responseObject : AnyObject!)
+    func handleFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!)
+    func handleError(operation: AFHTTPRequestOperation, error: NSError!)
 }
 
 
@@ -35,18 +35,18 @@ class RequestHelper{
                 {
                     if (status == "OK")
                     {
-                        delegate!.handelResponse(operation, responseObject: responseObject)
+                        delegate!.handleResponse(operation, responseObject: responseObject)
                     }
                     else
                     {
-                        delegate!.handelFailure(operation, responseObject: responseObject)
+                        delegate!.handleFailure(operation, responseObject: responseObject)
                     }
                 }
             },
             failure:{ (operation: AFHTTPRequestOperation!, error:NSError!) -> Void in
                 if ( delegate != nil)
                 {
-                    delegate!.handelError(operation, error: error)
+                    delegate!.handleError(operation, error: error)
                 }
         })
         

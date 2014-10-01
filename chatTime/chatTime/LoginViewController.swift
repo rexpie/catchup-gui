@@ -59,7 +59,7 @@ class LoginViewController: UIViewController, ResponseHandler{
         // Pass the selected object to the new view controller.
     }
     */
-    func handelResponse(operation: AFHTTPRequestOperation, responseObject : AnyObject!) {
+    func handleResponse(operation: AFHTTPRequestOperation, responseObject : AnyObject!) {
         println("Success")
         println("\(responseObject.description)")
         
@@ -81,7 +81,7 @@ class LoginViewController: UIViewController, ResponseHandler{
     }
     
     
-    func handelFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!) {
+    func handleFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!) {
         println("Failure")
         
         let dict = responseObject as NSDictionary
@@ -93,7 +93,7 @@ class LoginViewController: UIViewController, ResponseHandler{
     }
     
     
-    func handelError(operation: AFHTTPRequestOperation, error: NSError!) {
+    func handleError(operation: AFHTTPRequestOperation, error: NSError!) {
         println("Error")
         println(error.description)
 
