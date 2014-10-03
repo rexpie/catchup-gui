@@ -75,9 +75,12 @@ class PasswordResetViewController: UIViewController, ResponseHandler {
         let dict = responseObject as NSDictionary
         let json = JSONValue(dict)
         let status = json["status"].string!
-        var alert = UIAlertController(title: "Alert", message: status, preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertView()
+        println(messages["error"])
+//        alert.title = messages["error"].string!
+        alert.message = messages[status].string
+        alert.addButtonWithTitle(messages["ok"].string!)
+        alert.show()
     }
     func handleError(operation: AFHTTPRequestOperation, error: NSError!){
         println("Error")

@@ -24,6 +24,15 @@ let requestsConfig = NSFileManager.defaultManager().contentsAtPath(requestsPath!
 
 let requests = JSONValue(requestsConfig)
 
+
+let messagesPath = NSBundle.mainBundle().pathForResource("Messages.cn", ofType: "json")
+
+let messagesConfig = NSFileManager.defaultManager().contentsAtPath(messagesPath!)
+
+let messages = JSONValue(messagesConfig)
+
+
+
 public class Constants: NSObject {
     
     

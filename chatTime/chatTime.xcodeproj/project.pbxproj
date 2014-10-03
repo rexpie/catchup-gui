@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		871F32B719DE30E700C7EEEA /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871F32B619DE30E700C7EEEA /* PasswordResetViewController.swift */; };
+		871F32B919DEE76C00C7EEEA /* Messages.cn.json in Resources */ = {isa = PBXBuildFile; fileRef = 871F32B819DEE76C00C7EEEA /* Messages.cn.json */; };
 		87AC1F9919CE6C1300A4505B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1F9819CE6C1300A4505B /* AppDelegate.swift */; };
 		87AC1F9B19CE6C1300A4505B /* MeetingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1F9A19CE6C1300A4505B /* MeetingListViewController.swift */; };
 		87AC1F9D19CE6C1300A4505B /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AC1F9C19CE6C1300A4505B /* MessageViewController.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		871F32B619DE30E700C7EEEA /* PasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		871F32B819DEE76C00C7EEEA /* Messages.cn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Messages.cn.json; sourceTree = "<group>"; };
 		87AC1F9319CE6C1300A4505B /* chatTime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatTime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87AC1F9719CE6C1300A4505B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87AC1F9819CE6C1300A4505B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				87AC1F9719CE6C1300A4505B /* Info.plist */,
 				87AC1FDA19CE8DD400A4505B /* chatTime-Bridging-Header.h */,
 				87AC208419D1BC8900A4505B /* Requests.json */,
+				871F32B819DEE76C00C7EEEA /* Messages.cn.json */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87AC207F19CE98FC00A4505B /* Images.xcassets in Resources */,
+				871F32B919DEE76C00C7EEEA /* Messages.cn.json in Resources */,
 				87AC208619D1BC8900A4505B /* Requests.json in Resources */,
 				87AC207D19CE988700A4505B /* PEPhotoCropEditor.bundle in Resources */,
 				87AC1FA019CE6C1300A4505B /* Main.storyboard in Resources */,
