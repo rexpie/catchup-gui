@@ -23,6 +23,10 @@ class LoginViewController: UIViewController, ResponseHandler{
         performSegueWithIdentifier("registerSegue", sender: self)
     }
    
+    @IBAction func resetPassword(sender: AnyObject) {
+        performSegueWithIdentifier("passwordReset", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -1,9 +1,29 @@
 {
     "login" :{
-           "req"   : "user/userLogin",
-           "params": [
-                      {"name":"nickorphone", "optional":false},
-                      {"name":"password", "optional":false}
-                      ]
+        "req"   : "user/userLogin",
+        "params": [
+                   {"name":"nickorphone", "optional":false},
+                   {"name":"password", "optional":false}
+                   ]
+    },
+    "resetPassword" :{
+        "req"   : "user/resetPassword",
+        "params": [
+                   {"name": "nickorphone", "optional" :false},
+                   {"name": "code", "optional":false},
+                   {"name": "newPassword", "optional":false}
+                   ]
+    },
+    "validateReset" :{
+        "req"   : "user/validateReset",
+        "params": [
+                   {"name": "nickorphone", "optional" :false},
+                   ]
+    },
+    "validatePhone" :{
+        "req"   : "user/validatePhone",
+        "params": [
+                   {"name": "phoneNum", "optional" :false},
+                   ]
     }
 }

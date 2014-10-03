@@ -10,7 +10,7 @@ import UIKit
 
 
 public let PROTOCOL = "http://"
-public let HOST = "192.168.0.100"
+public let HOST = "192.168.1.4"
 public let PORT = "8080"
 
 public let WEB_ROOT = "tokenTest"
