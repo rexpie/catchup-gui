@@ -1346,6 +1346,9 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
     //*/
 
     [self followGesture:sender toPosition:position];
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [self sendActionsForControlEvents:UIControlEventValueChanged];
+    }
 }
 
 - (void)handleRotation:(UIRotationGestureRecognizer*)sender
@@ -1432,6 +1435,7 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
 
 - (void)followGesture:(UIGestureRecognizer*)sender toPosition:(double)position
 {
+    int theLastPositionIndex = lastPositionIndex;
     switch (sender.state) {
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateEnded:
@@ -1479,7 +1483,9 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
 
     if (_mode != IKCModeRotaryDial)
     {
-        [self sendActionsForControlEvents:UIControlEventValueChanged];
+        if (theLastPositionIndex != self.positionIndex) {
+            [self sendActionsForControlEvents:UIControlEventValueChanged];
+        }
     }
 }
 

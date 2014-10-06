@@ -280,6 +280,9 @@ class MeetingListViewController: UIViewController {
             println(sender.position)
             lastPositionIndex = nextCandidate
 //            sender.positionIndex = nextCandidate
+        } else if index == 0 {
+            println("TODO refresh")
+            // TODO refresh
         }
         
     }
