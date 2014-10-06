@@ -26,7 +26,7 @@ class MeetingListViewController: UIViewController {
     
     var knobControl : IOSKnobControl!
     
-    var currentIndex : Int = 0
+//    var currentIndex : Int = 0
     
     // -- end global vars
     
@@ -96,20 +96,20 @@ class MeetingListViewController: UIViewController {
                 let nextIndex:Int = lastPositionIndex - Int(direction)
                 
                 println("move")
-                self.currentIndex = nextIndex
-                animateStack(nextIndex, direction:direction)
-                knobControl.positionIndex = nextIndex
-                lastPositionIndex = nextIndex
+//                self.currentIndex = nextIndex
+                let nextCandidate = animateStack(nextIndex, direction:direction)
+                knobControl.positionIndex = nextCandidate
+                lastPositionIndex = nextCandidate
                 
             }
         }
     }
     
-    func animateStack(nextIndex:Int, direction:CGFloat)
+    func animateStack(nextIndex:Int, direction:CGFloat) -> Int
     {
         print("positionIndex")
         println(knobControl.positionIndex)
-        print("last pos%d")
+        print("last pos:")
         println(lastPositionIndex)
         
         println("nextIndex", nextIndex)
@@ -117,14 +117,16 @@ class MeetingListViewController: UIViewController {
         
         if (nextIndex < 0)
         {
-            // refresh
-            return
+            //TODO refresh
+            println("TODO refresh")
+            return lastPositionIndex
         }
         
-        if (lastPositionIndex == images.count - 1 && direction < 0)
+        if (lastPositionIndex >= images.count - 1 && direction < 0)
         {
-            // load more
-            return
+            //TODO load more
+            println("TODO load more")
+            return lastPositionIndex
         }
         
         
@@ -188,6 +190,7 @@ class MeetingListViewController: UIViewController {
             
         }
         
+        return nextIndex
     }
 
     
@@ -269,16 +272,14 @@ class MeetingListViewController: UIViewController {
         // display both the position and positionIndex properties
         let index = sender.positionIndex
         
-        if ( lastPositionIndex != index){
-            self.currentIndex = sender.positionIndex
-            animateStack(sender.positionIndex, direction: CGFloat(lastPositionIndex - index))
-        }
-        
-        if index != lastPositionIndex
-        {
+        if ( lastPositionIndex != index ){
+//            self.currentIndex = sender.positionIndex
+            let nextCandidate = animateStack(sender.positionIndex, direction: CGFloat(lastPositionIndex - index))
+            
             println(sender.positionIndex)
             println(sender.position)
-            lastPositionIndex = index
+            lastPositionIndex = nextCandidate
+//            sender.positionIndex = nextCandidate
         }
         
     }

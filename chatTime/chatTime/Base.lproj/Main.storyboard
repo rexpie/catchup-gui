@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6239"/>
     </dependencies>
     <scenes>
-        <!--Meeting List View Controller-->
+        <!--meeting list-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="MeetingListViewController" customModule="chatTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="meeting list" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="knobControlView" destination="8Lp-lh-G2g" id="oWa-iR-ydi"/>
                         <outlet property="stackView" destination="u5z-fb-j7d" id="wiZ-xX-Ypg"/>
@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="528" y="-771"/>
         </scene>
-        <!--Message View Controller-->
+        <!--message-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="MessageViewController" customModule="chatTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="message" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <segue destination="biP-Pg-DmY" kind="modal" identifier="loginSegue" id="RCS-IX-StG"/>
                     </connections>
@@ -320,7 +320,7 @@
             </objects>
             <point key="canvasLocation" x="2043" y="-735"/>
         </scene>
-        <!--Event View Controller-->
+        <!--event-->
         <scene sceneID="UkT-FW-VKq">
             <objects>
                 <viewController storyboardIdentifier="Event" id="UJl-rR-XL9" customClass="EventViewController" customModule="chatTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -338,13 +338,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="jYb-Zt-4RQ"/>
+                    <tabBarItem key="tabBarItem" title="event" id="jYb-Zt-4RQ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2G6-qQ-fgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="335" y="1011"/>
         </scene>
-        <!--My View Controller-->
+        <!--Me-->
         <scene sceneID="27J-ol-ND2">
             <objects>
                 <viewController storyboardIdentifier="My" id="AZW-Sa-55q" customClass="MyViewController" customModule="chatTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -362,13 +362,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="eTc-fd-LfY"/>
+                    <tabBarItem key="tabBarItem" title="Me" id="eTc-fd-LfY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XxP-uW-Iap" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1329" y="1080"/>
         </scene>
-        <!--New Meeting View Controller-->
+        <!--New Meeting-->
         <scene sceneID="0YO-Ja-tbo">
             <objects>
                 <viewController storyboardIdentifier="NewMeeting" id="HqF-A7-Sku" customClass="NewMeetingViewController" customModule="chatTime" customModuleProvider="target" sceneMemberID="viewController">
@@ -386,7 +386,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="1xF-oq-3kt"/>
+                    <tabBarItem key="tabBarItem" title="New Meeting" id="1xF-oq-3kt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9x-sO-YLX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
