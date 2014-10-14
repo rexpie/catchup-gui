@@ -71,7 +71,7 @@ class LoginViewController: UIViewController, ResponseHandler{
         
         let json = JSONValue(dict)
         
-        let id = json["id"].integer
+        let id = json["id"].string!
         let token = json["token"].string!
         let status = json["status"].string!
         println("id: \(id)")

@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
-class MeetingListViewController: UIViewController {
+class MeetingListViewController: UIViewController, ResponseHandler{
 
+    // master view
+    @IBOutlet var masterView: UIView!
+   
     // view ports
     @IBOutlet weak var stackView: UIView!
     
@@ -18,13 +22,23 @@ class MeetingListViewController: UIViewController {
     
     // global vars
     
-    let positions :UInt = 30
     var lastPositionIndex :Int = 0
     
     var images: [UIImage]! = []
     var imageViews : [UIImageView]! = []
     
+    var pageNum = 0
+    // UI每十个image一个page，用pageNum做分页，每次到底就刷新一次view，前后使用pageNumMapping做cache
+    // 到第一页的时候再往前做refresh
+    var meetings: [Meeting]! = []
+    
     var knobControl : IOSKnobControl!
+    
+    var photoMap : [ NSNumber: Int] = Dictionary<NSNumber, Int>()
+    
+    let spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
+    var isFirstRequest = true
     
 //    var currentIndex : Int = 0
     
@@ -34,25 +48,57 @@ class MeetingListViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        showSpinner()
+        
+        sendInitRequest()
+
+    }
+    
+    func showSpinner(){
+        masterView.addSubview(spinner)
+        spinner.center = masterView.center
+        spinner.startAnimating()
+    }
+    
+    func hideSpinner(){
+        spinner.stopAnimating()
+        spinner.removeFromSuperview()
+    }
+    
+    
+    func sendInitRequest(){
+        let initRequest = Utils.getRequest("getMeetingList")!
+        let location: CLLocation = getLocation()
+        initRequest.setParamValue("longitude", value: location.coordinate.longitude.description)
+        initRequest.setParamValue("latitude", value: location.coordinate.latitude.description)
+        initRequest.setParamValue("pagenum", value: String(pageNum))
+
+        
+        RequestHelper.sendRequest(initRequest, delegate: self)
+    }
+    
+    func getLocation() -> CLLocation{
+        //TODO use real data
+        return CLLocation(latitude: CLLocationDegrees(0), longitude: CLLocationDegrees(0))
+    }
+    
+    func initSubview(){
         // load images
         // TODO async
-        images.append(UIImage(named: "item1")!)
-        images.append(UIImage(named: "item2")!)
-        images.append(UIImage(named: "item3")!)
-        images.append(UIImage(named: "item4")!)
+        // send init request to get the first 10 meetings
+        
+        //        images.append(UIImage(named: "item1")!)
+        //        images.append(UIImage(named: "item2")!)
+        //        images.append(UIImage(named: "item3")!)
+        //        images.append(UIImage(named: "item4")!)
         
         let radius :Int = 800
         knobControl = getKnobControl(knobControlView, radius)
         
-        //======================================================
-        // image creation
-        
-        
-        //=====================================================================
-        //End image creation
-        for i in 0..<images.count{
-            setImageAtIndex(knobControl, index: UInt(i), image: images[i])
-        }
+        // move to init
+        //        for i in 0..<images.count{
+        //            setImageAtIndex(knobControl, index: UInt(i), image: images[i])
+        //        }
         
         knobControl.addTarget(self, action: "knobPositionChanged:", forControlEvents: UIControlEvents.ValueChanged)
         
@@ -68,10 +114,8 @@ class MeetingListViewController: UIViewController {
         //stack view starts
         
         
-        
-        setupStack(stackView, images: images)
-        
-
+        // move to init
+        //        setupStack(stackView, images: images)
     }
 
     override func didReceiveMemoryWarning() {
@@ -279,7 +323,7 @@ class MeetingListViewController: UIViewController {
             println(sender.positionIndex)
             println(sender.position)
             lastPositionIndex = nextCandidate
-//            sender.positionIndex = nextCandidate
+
         } else if index == 0 {
             println("TODO refresh")
             // TODO refresh
@@ -314,5 +358,100 @@ class MeetingListViewController: UIViewController {
     {
     }
 
+    
+    func handleResponse(operation: AFHTTPRequestOperation, responseObject : AnyObject!){
+        println("response")
+        
+        let url = operation.request.description
+        println(url)
+        
+        let parts = url.pathComponents
+        let parentReqString = parts[PARENT_REQ_COMPONENT_IDX]
+        let reqString = parts[CHILD_REQ_COMPONENT_IDX]
+        
+        let parser = DDURLParser(URLString: url)
+        
+        if ( parentReqString == "meeting" && reqString.hasPrefix("getMeetingList"))
+        {
+            
+            if (isFirstRequest){
+                // first time request came back, need to populate views
+                initSubview()
+            }
+            
+            let dict = responseObject as NSDictionary
+            let json = JSONValue(dict)
+            println(json.description)
+            
+            let meetingList = json["meetingList"].array!
+            
+            populateMeetingContent(meetingList)
+            
+            hideSpinner()
+        }
+        
+        if (parentReqString == "user" && reqString.hasPrefix("getPhoto"))
+        {
+            // update photo
+            let index = photoMap[parser.valueForVariable("picId").toInt()!]
+            
+        }
+    }
+    
+
+    func populateMeetingContent(meetingList: [JSONValue]){
+        for meetingData in meetingList{
+            let theMeeting = Meeting(data: meetingData)
+            meetings.append(theMeeting)
+            loadMeetingImage(theMeeting)
+        }
+    }
+    
+    
+    func loadMeetingImage(meeting: Meeting){
+        if let ownerId = meeting.ownerID?.integerValue
+        {
+            let photoIndex = meeting.pageNum! * itemsPerPage + meeting.index!
+            
+            photoMap[ownerId] = photoIndex
+            
+            let picRequest = Utils.getRequest("getPicture")!
+            picRequest.setParamValue("id", value: ownerId.description)
+            imageViews[photoIndex].setImageWithURL(picRequest.getURL())
+        }
+        else
+        {
+            println("ERROR: owner photo id not available: \(meeting.meetingId)")
+        }
+    }
+    
+    
+    func handleFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!){
+        //TODO
+        println("Failure")
+        
+        let dict = responseObject as NSDictionary
+        let json = JSONValue(dict)
+        let status = json["status"].string!
+        let alert = UIAlertView()
+        println(messages["error"])
+        //        alert.title = messages["error"].string!
+        alert.message = messages[status].string
+        alert.addButtonWithTitle(messages["ok"].string!)
+        alert.show()
+    }
+    
+    
+    func handleError(operation: AFHTTPRequestOperation, error: NSError!){
+        println("Error")
+        //TODO
+        let status = "networkError"
+        let alert = UIAlertView()
+        println(messages["error"])
+        //        alert.title = messages["error"].string!
+        alert.message = messages[status].string
+        alert.addButtonWithTitle(messages["ok"].string!)
+        alert.show()
+    }
 }
 

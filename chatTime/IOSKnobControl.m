@@ -260,19 +260,19 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
     /*
      * Get the attributed string to render
      */
-    CFAttributedStringRef attributed = self.attributedString;
+//    CFAttributedStringRef attributed = self.attributedString;
 
     // the font used by the attributed string
-    CTFontRef font = CFAttributedStringGetAttribute(attributed, 0, kCTFontAttributeName, NULL);
-    assert(font);
+//    CTFontRef font = CFAttributedStringGetAttribute(attributed, 0, kCTFontAttributeName, NULL);
+//    assert(font);
 
     // compute vertical position from font metrics
-    CGFloat belowBaseline = CTFontGetLeading(font) + CTFontGetDescent(font) + vertMargin;
-    CGFloat lineHeight = belowBaseline + CTFontGetAscent(font) + vertMargin;
+//    CGFloat belowBaseline = CTFontGetLeading(font) + CTFontGetDescent(font) + vertMargin;
+//    CGFloat lineHeight = belowBaseline + CTFontGetAscent(font) + vertMargin;
 
     // Make a CTLine to render from the attributed string
-    CTLineRef line = CTLineCreateWithAttributedString(attributed);
-    CFRelease(attributed);
+//    CTLineRef line = CTLineCreateWithAttributedString(attributed);
+//    CFRelease(attributed);
 
     // Generate a bitmap context at the correct resolution
     UIGraphicsBeginImageContext(size);
@@ -282,12 +282,12 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
     CGContextTranslateCTM(context, 0.0, size.height);
     CGContextScaleCTM(context, 1.0, -1.0);
 
-    CGFloat x = horizMargin;
-    CGFloat y = belowBaseline / lineHeight * size.height;
+//    CGFloat x = horizMargin;
+//    CGFloat y = belowBaseline / lineHeight * size.height;
 
-    CGContextSetTextPosition(context, x, y);
-    CTLineDraw(line, context);
-    CFRelease(line);
+//    CGContextSetTextPosition(context, x, y);
+//    CTLineDraw(line, context);
+//    CFRelease(line);
 
     // Get the generated bitmap and use it for the layer's contents.
     self.contents = (id)UIGraphicsGetImageFromCurrentImageContext().CGImage;

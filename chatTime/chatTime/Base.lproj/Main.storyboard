@@ -33,6 +33,7 @@
                     <tabBarItem key="tabBarItem" title="meeting list" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="knobControlView" destination="8Lp-lh-G2g" id="oWa-iR-ydi"/>
+                        <outlet property="masterView" destination="tsR-hK-woN" id="QIM-kn-InG"/>
                         <outlet property="stackView" destination="u5z-fb-j7d" id="wiZ-xX-Ypg"/>
                     </connections>
                 </viewController>

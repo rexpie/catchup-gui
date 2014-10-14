@@ -10,7 +10,7 @@ import UIKit
 
 
 public let PROTOCOL = "http://"
-public let HOST = "192.168.1.4"
+public let HOST = "192.168.0.101"
 public let PORT = "8080"
 
 public let WEB_ROOT = "tokenTest"
@@ -31,7 +31,13 @@ let messagesConfig = NSFileManager.defaultManager().contentsAtPath(messagesPath!
 
 let messages = JSONValue(messagesConfig)
 
+let positions :UInt = 30
 
+let itemsPerPage : Int = 10
+
+let PARENT_REQ_COMPONENT_IDX = 3
+
+let CHILD_REQ_COMPONENT_IDX = 4
 
 public class Constants: NSObject {
     

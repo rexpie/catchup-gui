@@ -17,13 +17,42 @@
     "validateReset" :{
         "req"   : "user/validateReset",
         "params": [
-                   {"name": "nickorphone", "optional" :false},
+                   {"name": "nickorphone", "optional" :false}
                    ]
     },
     "validatePhone" :{
         "req"   : "user/validatePhone",
         "params": [
-                   {"name": "phoneNum", "optional" :false},
+                   {"name": "phoneNum", "optional" :false}
                    ]
+    },
+    
+    "getMeetingList" :{
+        "req"   : "meeting/getMeetingList",
+        "params": [
+                   {"name": "longitude", "optional" :false},
+                   {"name": "latitude", "optional" :false},
+                   {"name": "pagenum", "optional" :false},
+                   {"name": "sorttype", "optional" :true},
+                   {"name": "gender", "optional" :true},
+                   {"name": "shopName", "optional" :true},
+                   {"name": "job",  "optional" :true}
+                   ]
+    },
+
+    "getPhoto" :{
+        "req"   : "user/getPhoto",
+        "params": [
+                   {"name": "picId", "optional": false}
+        ],
+        "needToken": true
+    },
+    
+    "getPicture":{
+        "req"   : "user/getPicture",
+        "params": [
+                   {"name" : "id", "optional": false}
+        ]
     }
+    
 }

@@ -4,5 +4,6 @@
     "ERROR":"错误",
     "error":"错误",
     "ERR_PHONE_VALIDATION_FAIL":"您的验证码不正确，请重新获取",
-    "ERR_USER_NOT_FOUND":"用户不存在"
+    "ERR_USER_NOT_FOUND":"用户不存在",
+    "networkError":"通讯错误"
 }

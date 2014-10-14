@@ -36,8 +36,8 @@ public class Utils: NSObject {
             if(needToken!)
             {
                 var defaults = NSUserDefaults.standardUserDefaults()
-                var token = defaults.objectForKey("token") as String?
-                var id = defaults.objectForKey("id") as String?
+                var token : AnyObject? = defaults.objectForKey("token")
+                var id : AnyObject? = defaults.objectForKey("id")
                 
                 if ( token == nil || id == nil)
                 {
@@ -48,8 +48,8 @@ public class Utils: NSObject {
                         token = defaults.objectForKey("token") as String?
                         id = defaults.objectForKey("id") as String?
                         
-                        let tokenParam = Param(name: "token", value: token!, isOptional: false)
-                        let idParam = Param(name: "id", value: id!, isOptional: false)
+                        let tokenParam = Param(name: "token", value: token! as String, isOptional: false)
+                        let idParam = Param(name: "id", value: id! as String, isOptional: false)
                         
                         params.append(tokenParam)
                         params.append(idParam)
@@ -62,8 +62,8 @@ public class Utils: NSObject {
                 }
                 else
                 {
-                    let tokenParam = Param(name: "token", value: token!, isOptional: false)
-                    let idParam = Param(name: "id", value: id!, isOptional: false)
+                    let tokenParam = Param(name: "token", value: token! as String, isOptional: false)
+                    let idParam = Param(name: "id", value: String(id! as Int), isOptional: false)
                     
                     params.append(tokenParam)
                     params.append(idParam)
