@@ -18,6 +18,8 @@ public let PARAM_SEPARATOR = "?"
 
 public let SALT = "扯淡=chatTime=茶谈"
 
+public let PLACE_HOLDER_IMAGE_NAME = "item1"
+
 let requestsPath = NSBundle.mainBundle().pathForResource("Requests", ofType: "json")
 
 let requestsConfig = NSFileManager.defaultManager().contentsAtPath(requestsPath!)

@@ -54,6 +54,17 @@ class chatTimeTests: XCTestCase {
         XCTAssert(source.md5 == "7571af3ff2620c360917bba8201d9d94", "wut md5");
     }
     
+    func testArray(){
+        
+        var array: [Int] = [0]
+        
+        array[5] = 3
+        
+        for i in 0..<array.count{
+            println(array[i])
+            
+        }
+    }
 }
 
 extension String  {

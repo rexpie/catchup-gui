@@ -8,7 +8,10 @@
 
 import UIKit
 
+public var placeholderImage : UIImage?
+
 public class Utils: NSObject {
+    
     
     public class func getBaseURL() -> String{
         return PROTOCOL + HOST + ":" + PORT + "/" + WEB_ROOT + "/"
@@ -102,6 +105,13 @@ public class Utils: NSObject {
             RequestHelper.sendRequest(request, delegate: nil)
         }
         return false
+    }
+    
+    public class func getPlaceholderImageLarge() -> UIImage{
+        if (placeholderImage == nil){
+            placeholderImage = UIImage(named: PLACE_HOLDER_IMAGE_NAME)!
+        }
+        return placeholderImage!
     }
     
 }

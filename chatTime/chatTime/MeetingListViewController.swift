@@ -24,8 +24,8 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     
     var lastPositionIndex :Int = 0
     
-    var images: [UIImage]! = []
-    var imageViews : [UIImageView]! = []
+    var images: [UIImage] = []
+    var imageViews : [UIImageView] = []
     
     var pageNum = 0
     // UI每十个image一个page，用pageNum做分页，每次到底就刷新一次view，前后使用pageNumMapping做cache
@@ -112,10 +112,8 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         //knob view finished
         
         //stack view starts
-        
-        
-        // move to init
-        //        setupStack(stackView, images: images)
+        let gesture = UITapGestureRecognizer(target: self, action: "handleTap:")
+        stackView.addGestureRecognizer(gesture)
     }
 
     override func didReceiveMemoryWarning() {
@@ -163,10 +161,11 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         {
             //TODO refresh
             println("TODO refresh")
+            sendInitRequest()
             return lastPositionIndex
         }
         
-        if (lastPositionIndex >= images.count - 1 && direction < 0)
+        if (lastPositionIndex >= imageViews.count - 1 && direction < 0)
         {
             //TODO load more
             println("TODO load more")
@@ -240,19 +239,17 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     
     func setupStack(stackView: UIView, images: [UIImage])
     {
-        var zPositionIndex: CGFloat = 2
-        for image in images{
-            let imageView = UIImageView(image: image)
-            imageViews.append(imageView)
-            imageView.layer.zPosition = zPositionIndex
-            zPositionIndex = zPositionIndex - 1
-            imageView.center = stackView.center
-            stackView.addSubview(imageView)
+        for view in stackView.subviews {
+            view.removeFromSuperview()
         }
-        
-        
-        let gesture = UITapGestureRecognizer(target: self, action: "handleTap:")
-        stackView.addGestureRecognizer(gesture)
+        var zPositionIndex: CGFloat = 2
+        for i in 0..<images.count{
+            imageViews[i].layer.zPosition = zPositionIndex
+            zPositionIndex = zPositionIndex - 1
+            imageViews[i].center = stackView.center
+            stackView.addSubview(imageViews[i])
+        }
+    
     }
     
     func setImageAtIndex(knobControl: IOSKnobControl, index: UInt, image: UIImage)
@@ -400,10 +397,20 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     
 
     func populateMeetingContent(meetingList: [JSONValue]){
+        initImages(meetingList.count)
         for meetingData in meetingList{
             let theMeeting = Meeting(data: meetingData)
             meetings.append(theMeeting)
             loadMeetingImage(theMeeting)
+        }
+    }
+    
+
+    func initImages(count: Int){
+        images = [UIImage](count: count, repeatedValue: Utils.getPlaceholderImageLarge())
+        imageViews = [UIImageView](count: count, repeatedValue: UIImageView())
+        for i in 0..<imageViews.count{
+            imageViews[i] = UIImageView(image: Utils.getPlaceholderImageLarge())
         }
     }
     
@@ -417,7 +424,20 @@ class MeetingListViewController: UIViewController, ResponseHandler{
             
             let picRequest = Utils.getRequest("getPicture")!
             picRequest.setParamValue("id", value: ownerId.description)
-            imageViews[photoIndex].setImageWithURL(picRequest.getURL())
+            println(picRequest.getURL()?.description)
+            println(photoIndex)
+            imageViews[photoIndex].setImageWithURLRequest(picRequest.getURLRequest(), placeholderImage: Utils.getPlaceholderImageLarge(),
+                success:{ (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) -> Void in
+                    self.images[photoIndex] = image
+                    self.imageViews[photoIndex].image = image
+                    self.reloadImage()
+                    println(photoIndex)
+                    println(request.description)
+                }, failure:{
+                    (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
+                    println("failed to load image")
+            }
+            )
         }
         else
         {
@@ -425,6 +445,18 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         }
     }
     
+    
+    func reloadImage(){
+        // images and imageViews should be consistent
+        // move to init
+        
+        for i in 0..<self.images.count{
+            setImageAtIndex(knobControl, index: UInt(i), image: images[i])
+        }
+        knobPositionChanged(knobControl)
+        setupStack(stackView, images: images)
+        
+    }
     
     func handleFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!){
         //TODO

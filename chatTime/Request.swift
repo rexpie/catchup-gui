@@ -39,6 +39,10 @@ public class Request {
         return url
     }
     
+    public func getURLRequest() -> NSURLRequest{
+        return NSURLRequest(URL: getURL()!)
+    }
+    
     public init(reqString: String!, params: [Param]!){
         self.reqString = reqString
         self.params = params

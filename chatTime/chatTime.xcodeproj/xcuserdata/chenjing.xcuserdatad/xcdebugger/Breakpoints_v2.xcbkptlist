@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chatTime/Utils.swift"
-            timestampString = "433177484.473086"
+            timestampString = "435159611.598138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "getParams(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chatTime/MeetingListViewController.swift"
-            timestampString = "434355830.17484"
+            timestampString = "435170565.069751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "377"
-            endingLineNumber = "377"
+            startingLineNumber = "374"
+            endingLineNumber = "374"
             landmarkName = "handleResponse(_:responseObject:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,13 +90,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chatTime/MeetingListViewController.swift"
-            timestampString = "434370773.773663"
+            timestampString = "435170565.069751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "412"
-            endingLineNumber = "412"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
             landmarkName = "loadMeetingImage(_:)"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "chatTime.MeetingListViewController.loadMeetingImage (chatTime.MeetingListViewController)(chatTime.Meeting) -&gt; ()"
+                  moduleName = "chatTime"
+                  urlString = "file:///Users/chenjing/catchup-gui/chatTime/chatTime/MeetingListViewController.swift"
+                  timestampString = "435168972.510215"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "421"
+                  endingLineNumber = "421"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "chatTime.MeetingListViewController.loadMeetingImage (chatTime.MeetingListViewController)(chatTime.Meeting) -&gt; ()"
+                  moduleName = "chatTime"
+                  urlString = "file:///Users/chenjing/catchup-gui/chatTime/chatTime/MeetingListViewController.swift"
+                  timestampString = "435168972.510565"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "421"
+                  endingLineNumber = "421"
+                  offsetFromSymbolStart = "5124">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -106,11 +136,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chatTime/Utils.swift"
-            timestampString = "434370038.778436"
+            timestampString = "435159611.598138"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "getParams(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chatTime/MeetingListViewController.swift"
-            timestampString = "434370813.097397"
+            timestampString = "435170565.069751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "handleResponse(_:responseObject:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -134,16 +164,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "chatTime/ResponseHandler.swift"
-            timestampString = "434992928.817073"
+            timestampString = "435157214.084812"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "sendRequest(_:delegate:isImage:)"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "sendRequest(_:delegate:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "chatTime/MeetingListViewController.swift"
+            timestampString = "435170726.41697"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "453"
+            endingLineNumber = "453"
+            landmarkName = "reloadImage()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "chatTime/MeetingListViewController.swift"
+            timestampString = "435170726.41697"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "431"
+            endingLineNumber = "431"
+            landmarkName = "loadMeetingImage(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
