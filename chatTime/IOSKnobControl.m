@@ -449,6 +449,7 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
 
 @implementation IOSKnobControl {
     float touchStart, positionStart, currentTouch;
+    int positionIndexStart;
     UIGestureRecognizer* gestureRecognizer;
     CALayer* imageLayer, *backgroundLayer, *foregroundLayer, *middleLayer, *shadowLayer;
     CAShapeLayer* shapeLayer, *pipLayer, *stopLayer;
@@ -858,6 +859,11 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
     shapeLayer = nil;
     imageLayer = [self createShapeLayer];
     [self.layer addSublayer:imageLayer];
+}
+
+- (void)setUpper:(float)upper
+{
+    _upper = upper;
 }
 
 - (void)setGesture:(IKCGesture)gesture
@@ -1316,6 +1322,7 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
     if (sender.state == UIGestureRecognizerStateBegan) {
         touchStart = touch;
         positionStart = self.position;
+        positionIndexStart = self.positionIndex;
         currentTouch = touch;
         if (_mode == IKCModeRotaryDial) {
             _numberDialed = numberDialed([self polarAngleOfPoint:centerFrameBegin]);
@@ -1332,6 +1339,10 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
     }
 
     float position = positionStart + touch - touchStart;
+    
+    if (position >= _upper){
+        position = _upper;
+    }
 
     currentTouch = touch;
 
@@ -1346,7 +1357,7 @@ static CGRect adjustFrame(CGRect frame, CGFloat fingerHoleRadius) {
     //*/
 
     [self followGesture:sender toPosition:position];
-    if (sender.state == UIGestureRecognizerStateEnded) {
+    if (sender.state == UIGestureRecognizerStateEnded && positionIndexStart == self.positionIndex) {
         [self sendActionsForControlEvents:UIControlEventValueChanged];
     }
 }

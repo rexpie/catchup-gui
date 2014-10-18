@@ -27,6 +27,8 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     var images: [UIImage] = []
     var imageViews : [UIImageView] = []
     
+    var imageCache = Dictionary<Int, UIImage>()
+    
     var pageNum = 0
     // UI每十个image一个page，用pageNum做分页，每次到底就刷新一次view，前后使用pageNumMapping做cache
     // 到第一页的时候再往前做refresh
@@ -40,6 +42,12 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     
     var isFirstRequest = true
     
+    var isInitCall = true
+    
+    var refreshing = true
+    
+    var refreshingFinished = true
+    
 //    var currentIndex : Int = 0
     
     // -- end global vars
@@ -49,7 +57,7 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         // Do any additional setup after loading the view, typically from a nib.
         
         showSpinner()
-        
+        refreshing = true
         sendInitRequest()
 
     }
@@ -72,7 +80,6 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         initRequest.setParamValue("longitude", value: location.coordinate.longitude.description)
         initRequest.setParamValue("latitude", value: location.coordinate.latitude.description)
         initRequest.setParamValue("pagenum", value: String(pageNum))
-
         
         RequestHelper.sendRequest(initRequest, delegate: self)
     }
@@ -103,7 +110,7 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         knobControl.addTarget(self, action: "knobPositionChanged:", forControlEvents: UIControlEvents.ValueChanged)
         
         resetKnobControl(knobControl, positions: positions)
-        knobPositionChanged(knobControl)
+//        knobPositionChanged(knobControl)
         
         // initialize all other properties based on initial control values
         updateKnobProperties()
@@ -160,7 +167,9 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         if (nextIndex < 0)
         {
             //TODO refresh
-            println("TODO refresh")
+            println("TODO refresh from animate stack")
+            refreshing = true
+            pageNum = 0
             sendInitRequest()
             return lastPositionIndex
         }
@@ -169,6 +178,9 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         {
             //TODO load more
             println("TODO load more")
+            pageNum = pageNum + 1
+            lastPositionIndex = 0
+            sendInitRequest()
             return lastPositionIndex
         }
         
@@ -252,16 +264,56 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     
     }
     
+    
+    func setImages(knobControl: IOSKnobControl, images: [UIImage]) {
+        knobControl.setImage(nil, forState: UIControlState.Normal)
+        
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: knobControl.bounds.width, height: knobControl.bounds.height), false, 0)
+        // CG context used across many calls
+        var context = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context, UIColor.clearColor().CGColor)
+        
+        let imageX = knobControl.bounds.width/2
+        let imageY = knobControl.bounds.height/2
+        
+        //center of knobControl
+        let drawPoint = CGPoint(x:imageX,y:imageY)
+        
+        // angle between every image
+        let angle :Double = M_PI * 2 / Double(positions)
+        
+        // strangely knobControl like to place the 0 index at bottom of the image, not top.
+        // use offset to put the image into the right place, so the first image we place is at index 0
+        let offset : Double = (angle / 2.0) - (angle * (Double(positions)/2.0))
+        
+        for index in 0..<images.count{
+            drawImageWithRotation(context, image:images[index], rotation:CGFloat(Double(index) * angle + offset), point:drawPoint)
+        }
+        
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        knobControl.setImage(newImage, forState: UIControlState.Normal)
+        knobControl.upper = Float((Double(images.count) - 0.51)  * angle + offset)
+    }
+    
     func setImageAtIndex(knobControl: IOSKnobControl, index: UInt, image: UIImage)
     {
         // using bounds is essential to get the correct size for the image, see frame vs. bounds in ios
         
         UIGraphicsBeginImageContextWithOptions(CGSize(width: knobControl.bounds.width, height: knobControl.bounds.height), false, 0)
-        
-        var originalImage : UIImage! = knobControl.imageForState(UIControlState.Normal)
-        if (originalImage != nil){
-            originalImage!.drawAtPoint(CGPointMake(0, 0))
-        }
+//        
+        knobControl.setImage(nil, forState: UIControlState.Normal)
+        knobControl.setImage(nil, forState: UIControlState.Highlighted)
+        knobControl.setImage(nil, forState: UIControlState.Disabled)
+        knobControl.setImage(nil, forState: UIControlState.Selected)
+//        var originalImage : UIImage! = knobControl.imageForState(UIControlState.Normal)
+//        if (originalImage != nil){
+//            originalImage!.drawAtPoint(CGPointMake(0, 0))
+//        }
         
         
         // CG context used across many calls
@@ -310,22 +362,33 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     
     func knobPositionChanged(sender: IOSKnobControl)
     {
+        println("in knobPositionChanged")
         // display both the position and positionIndex properties
         let index = sender.positionIndex
         
         if ( lastPositionIndex != index ){
-//            self.currentIndex = sender.positionIndex
-            let nextCandidate = animateStack(sender.positionIndex, direction: CGFloat(lastPositionIndex - index))
+            //            self.currentIndex = sender.positionIndex
+            if (lastPositionIndex >= imageViews.count - 1 && (lastPositionIndex - index) < 0)
+            {
+                //TODO load more
+                println("TODO load more")
+                println(sender.positionIndex)
+                println(sender.position)
+            } else {
+                let nextCandidate = animateStack(index, direction: CGFloat(lastPositionIndex - index))
+                
+                println(sender.positionIndex)
+                println(sender.position)
+                lastPositionIndex = nextCandidate
+            }
             
-            println(sender.positionIndex)
-            println(sender.position)
-            lastPositionIndex = nextCandidate
-
-        } else if index == 0 {
-            println("TODO refresh")
-            // TODO refresh
+            
+        } else if index == 0 && !isInitCall{
+            println("TODO refresh from knob position changed")
+//            pageNum = 0
+//            sendInitRequest()
         }
-        
+        isInitCall = false
     }
     
     func resetKnobControl(knobControl:IOSKnobControl, positions: UInt)
@@ -337,6 +400,10 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         // use offset to put the image into the right place, so the first image we place is at index 0
         let offset : Double = (angle / 2.0) - (angle * (Double(positions)/2.0))
         knobControl.setPosition(Float(offset), animated: false)
+        knobControl.setImage(nil, forState: UIControlState.Normal)
+        knobControl.setImage(nil, forState: UIControlState.Highlighted)
+        knobControl.setImage(nil, forState: UIControlState.Disabled)
+        knobControl.setImage(nil, forState: UIControlState.Selected)
         
     }
     
@@ -382,6 +449,10 @@ class MeetingListViewController: UIViewController, ResponseHandler{
             
             let meetingList = json["meetingList"].array!
             
+            if (meetingList.count == 0){
+                //TODO alert zero count, remind to refresh
+            }
+            
             populateMeetingContent(meetingList)
             
             hideSpinner()
@@ -393,6 +464,8 @@ class MeetingListViewController: UIViewController, ResponseHandler{
             let index = photoMap[parser.valueForVariable("picId").toInt()!]
             
         }
+        
+        refreshingFinished = true
     }
     
 
@@ -422,22 +495,33 @@ class MeetingListViewController: UIViewController, ResponseHandler{
             
             photoMap[ownerId] = photoIndex
             
-            let picRequest = Utils.getRequest("getPicture")!
-            picRequest.setParamValue("id", value: ownerId.description)
-            println(picRequest.getURL()?.description)
-            println(photoIndex)
-            imageViews[photoIndex].setImageWithURLRequest(picRequest.getURLRequest(), placeholderImage: Utils.getPlaceholderImageLarge(),
-                success:{ (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) -> Void in
-                    self.images[photoIndex] = image
-                    self.imageViews[photoIndex].image = image
-                    self.reloadImage()
-                    println(photoIndex)
-                    println(request.description)
-                }, failure:{
-                    (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
-                    println("failed to load image")
+            if ( imageCache[ownerId] == nil){
+                let picRequest = Utils.getRequest("getPicture")!
+                picRequest.setParamValue("id", value: ownerId.description)
+                println(picRequest.getURL()?.description)
+                println(photoIndex)
+                imageViews[meeting.index!].setImageWithURLRequest(picRequest.getURLRequest(), placeholderImage: Utils.getPlaceholderImageLarge(),
+                    success:{ (request: NSURLRequest!, response: NSHTTPURLResponse!, image: UIImage!) -> Void in
+                        self.images[meeting.index!] = image
+                        self.imageViews[meeting.index!].image = image
+                        self.imageCache[ownerId] = image
+                        self.reloadImage()
+                        println("on success with image")
+                        println(photoIndex)
+                        if ( request != nil ){
+                            println(request.description)
+                        }
+                    }, failure:{
+                        (request: NSURLRequest!, response: NSHTTPURLResponse!, error: NSError!) -> Void in
+                        println("failed to load image")
+                    }
+                )
+            } else {
+                let image: UIImage = imageCache[ownerId]!
+                self.images[meeting.index!] = image
+                self.imageViews[meeting.index!].image = image
+                self.reloadImage()
             }
-            )
         }
         else
         {
@@ -449,13 +533,25 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     func reloadImage(){
         // images and imageViews should be consistent
         // move to init
+        clearKnobImage(knobControl)
         
-        for i in 0..<self.images.count{
-            setImageAtIndex(knobControl, index: UInt(i), image: images[i])
-        }
-        knobPositionChanged(knobControl)
+        setImages(knobControl, images: self.images)
+        
         setupStack(stackView, images: images)
         
+    }
+    
+    func clearKnobImage(knobControl: IOSKnobControl){
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: knobControl.bounds.width, height: knobControl.bounds.height), false, 0)
+        var context = UIGraphicsGetCurrentContext()
+
+        CGContextSetFillColorWithColor(context, UIColor.clearColor().CGColor)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        knobControl.setImage(newImage, forState: UIControlState.Normal)
     }
     
     func handleFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!){

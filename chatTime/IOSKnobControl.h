@@ -212,6 +212,9 @@ static const NSInteger IKCGTap DEPRECATED_MSG_ATTRIBUTE("Use IKCGestureTap inste
  */
 @property (nonatomic) float max;
 
+@property (nonatomic) float upper;
+
+
 /** Minimum value of position
  *
  * Minimum value of the position property if circular == NO. It is ignored in IKCModeRotaryDial. All values are valid, but min and max must be no more than 2π apart. The last one set wins.
