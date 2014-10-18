@@ -44,7 +44,7 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     
     var isInitCall = true
     
-    var refreshing = true
+    var refreshing = false
     
     var refreshingFinished = true
     
@@ -164,13 +164,18 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         println("nextIndex", nextIndex)
         let translationX = direction * 100
         
-        if (nextIndex < 0)
+        if (nextIndex < 0 && pageNum == 0)
         {
             //TODO refresh
             println("TODO refresh from animate stack")
             refreshing = true
-            pageNum = 0
-            sendInitRequest()
+            loadAbsolutePage(0)
+            return lastPositionIndex
+        }
+        
+        if ( nextIndex < 0 && pageNum > 0){
+            println("loading prev page from animate stack")
+            loadRelativePage(-1)
             return lastPositionIndex
         }
         
@@ -178,9 +183,7 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         {
             //TODO load more
             println("TODO load more")
-            pageNum = pageNum + 1
-            lastPositionIndex = 0
-            sendInitRequest()
+            loadRelativePage(1)
             return lastPositionIndex
         }
         
@@ -247,7 +250,23 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         
         return nextIndex
     }
+    
+    
+    func loadRelativePage(offset : Int){
+        pageNum = pageNum + offset
+        lastPositionIndex = 0
+        clearKnobImage(knobControl)
+        knobControl.positionIndex = 0
+        sendInitRequest()
+    }
 
+    func loadAbsolutePage(_pageNum: Int){
+        pageNum = _pageNum
+        lastPositionIndex = 0
+        clearKnobImage(knobControl)
+        knobControl.positionIndex = 0
+        sendInitRequest()
+    }
     
     func setupStack(stackView: UIView, images: [UIImage])
     {
@@ -367,13 +386,14 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         let index = sender.positionIndex
         
         if ( lastPositionIndex != index ){
-            //            self.currentIndex = sender.positionIndex
+            // moved to a new index, update stack view
             if (lastPositionIndex >= imageViews.count - 1 && (lastPositionIndex - index) < 0)
             {
-                //TODO load more
-                println("TODO load more")
-                println(sender.positionIndex)
-                println(sender.position)
+                // useless after added the upper bound for knob control position
+//                //TODO load more
+//                println("TODO load more")
+//                println(sender.positionIndex)
+//                println(sender.position)
             } else {
                 let nextCandidate = animateStack(index, direction: CGFloat(lastPositionIndex - index))
                 
@@ -383,12 +403,27 @@ class MeetingListViewController: UIViewController, ResponseHandler{
             }
             
             
-        } else if index == 0 && !isInitCall{
-            println("TODO refresh from knob position changed")
-//            pageNum = 0
-//            sendInitRequest()
+        } else {
+            // same position
+            // reload when index = 0 and pageNum = 0, when not initializing(avoid infinite loop)
+            // and when not during an on-going reloading process ( avoid infinite loop )
+            if index == 0 && pageNum == 0 && !isInitCall && !refreshing{
+                
+                println("TODO refresh from knob position changed")
+                refreshing = true
+                loadAbsolutePage(0)
+                refreshing = false
+            } else if index == images.count - 1 {
+            // load next page if index hits the last image index
+                println("loading more")
+                loadRelativePage(1)
+                sendInitRequest()
+            } else if ( index == 0 && pageNum > 0 && !refreshing){
+                // load prev page
+                println("loading prev page")
+                loadRelativePage(-1)
+            }
         }
-        isInitCall = false
     }
     
     func resetKnobControl(knobControl:IOSKnobControl, positions: UInt)
@@ -401,9 +436,6 @@ class MeetingListViewController: UIViewController, ResponseHandler{
         let offset : Double = (angle / 2.0) - (angle * (Double(positions)/2.0))
         knobControl.setPosition(Float(offset), animated: false)
         knobControl.setImage(nil, forState: UIControlState.Normal)
-        knobControl.setImage(nil, forState: UIControlState.Highlighted)
-        knobControl.setImage(nil, forState: UIControlState.Disabled)
-        knobControl.setImage(nil, forState: UIControlState.Selected)
         
     }
     
@@ -441,6 +473,7 @@ class MeetingListViewController: UIViewController, ResponseHandler{
             if (isFirstRequest){
                 // first time request came back, need to populate views
                 initSubview()
+                isFirstRequest = false
             }
             
             let dict = responseObject as NSDictionary
@@ -456,6 +489,8 @@ class MeetingListViewController: UIViewController, ResponseHandler{
             populateMeetingContent(meetingList)
             
             hideSpinner()
+            
+            knobControl.position = knobControl.position
         }
         
         if (parentReqString == "user" && reqString.hasPrefix("getPhoto"))
@@ -464,8 +499,9 @@ class MeetingListViewController: UIViewController, ResponseHandler{
             let index = photoMap[parser.valueForVariable("picId").toInt()!]
             
         }
-        
+        refreshing = false
         refreshingFinished = true
+        isInitCall = false
     }
     
 
@@ -542,16 +578,17 @@ class MeetingListViewController: UIViewController, ResponseHandler{
     }
     
     func clearKnobImage(knobControl: IOSKnobControl){
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: knobControl.bounds.width, height: knobControl.bounds.height), false, 0)
-        var context = UIGraphicsGetCurrentContext()
-
-        CGContextSetFillColorWithColor(context, UIColor.clearColor().CGColor)
-
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        
-        UIGraphicsEndImageContext()
-        
-        knobControl.setImage(newImage, forState: UIControlState.Normal)
+//        UIGraphicsBeginImageContextWithOptions(CGSize(width: knobControl.bounds.width, height: knobControl.bounds.height), false, 0)
+//        var context = UIGraphicsGetCurrentContext()
+//
+//        CGContextSetFillColorWithColor(context, UIColor.clearColor().CGColor)
+//
+//        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+//        
+//        UIGraphicsEndImageContext()
+//        
+//        knobControl.setImage(newImage, forState: UIControlState.Normal)
+        knobControl.setImage(nil, forState: UIControlState.Normal)
     }
     
     func handleFailure(operation: AFHTTPRequestOperation, responseObject : AnyObject!){
